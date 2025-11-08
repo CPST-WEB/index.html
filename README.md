@@ -566,5 +566,28 @@
   function renderAll(){ renderStats(); renderTable(); }
   renderAll();
 </script>
+<!-- 🔹 Firebase Configuration -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-app.js";
+  import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-firestore.js";
+  import { getStorage } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-storage.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyC-p21Tvug@IFG6dcBZZzjZKrqL_JC4RbDU",  <!-- remplace ici par tes vraies clés -->
+    authDomain: "bo-cpst.firebaseapp.com",
+    projectId: "bo-cpst",
+    storageBucket: "bo-cpst.appspot.com",
+    messagingSenderId: "944143446435",
+    appId: "1:944143446435:web:20d5a74b7150379b226a16"
+  };
+
+  // Initialisation Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  const storage = getStorage(app);
+
+  console.log("✅ Firebase connecté avec succès");
+</script>
+
 </body>
 </html>
