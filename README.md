@@ -511,17 +511,26 @@
     grid.querySelector("#btnCancel").onclick = function(){
       var m = document.getElementById("__modal"); if(m) m.remove();
     };
-    grid.querySelector("#btnSave").onclick = function(){
-      // simple contrôle minimal
-      if(!f.objet){
-        alert("Veuillez saisir l'objet du courrier."); return;
-      }
-      var i = ROWS.findIndex(function(x){return x.id===f.id;});
-      if(i>=0) ROWS[i]=f; else ROWS.unshift(f);
-      save();
-      var m = document.getElementById("__modal"); if(m) m.remove();
-      renderAll();
-    };
+   grid.querySelector("#btnSave").onclick = async function(){
+  if(!f.objet){
+    alert("Veuillez saisir l'objet du courrier."); 
+    return;
+  }
+
+  var i = ROWS.findIndex(function(x){return x.id===f.id;});
+  if(i>=0) ROWS[i]=f; else ROWS.unshift(f);
+  save();
+  renderAll();
+
+  // 🔹 Enregistrement dans Firebase
+  if (window.saveToFirebase) {
+    await window.saveToFirebase(f);
+  }
+
+  alert("Courrier enregistré avec succès !");
+  var m = document.getElementById("__modal"); 
+  if(m) m.remove();
+};
 
     syncToForm();
     openModal(initial ? "Modifier le courrier" : "Nouveau courrier", grid);
@@ -587,6 +596,36 @@
   const storage = getStorage(app);
 
   console.log("✅ Firebase connecté avec succès");
+  <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-app.js";
+  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-firestore.js";
+  import { getStorage } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-storage.js";
+
+  const firebaseConfig = {
+    apiKey: "TA_CLE_API",
+    authDomain: "bo-cpst.firebaseapp.com",
+    projectId: "bo-cpst",
+    storageBucket: "bo-cpst.appspot.com",
+    messagingSenderId: "XXXXXXXXXX",
+    appId: "1:XXXXXXXXXX:web:XXXXXXXXXX"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  const storage = getStorage(app);
+  console.log("✅ Firebase connecté avec succès");
+
+  // 🔹 Fonction d’enregistrement dans Firestore
+  window.saveToFirebase = async function(courrier) {
+    try {
+      await addDoc(collection(db, "courriers"), courrier);
+      console.log("📄 Courrier enregistré dans Firestore !");
+    } catch (e) {
+      console.error("Erreur Firestore :", e);
+    }
+  };
+</script>
+
 </script>
 
 </body>
