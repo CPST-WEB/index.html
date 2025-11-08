@@ -31,13 +31,18 @@
   <!-- ENTÊTE -->
   <header class="no-print sticky top-0 z-10 bg-white/95 backdrop-blur border rounded-lg">
     <div class="px-4 py-3 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <div class="h-12 w-12 rounded-md border bg-blue-700"></div>
-        <div>
-          <div class="text-sm text-gray-500">Conseil Préfectoral Skhirate Témara</div>
-          <div class="text-lg font-bold">Bureau d'Ordre — Gestion du Courrier</div>
-        </div>
-      </div>
+     <div class="flex items-center gap-3">
+  <div class="h-12 w-12 rounded-md border bg-white overflow-hidden flex items-center justify-center">
+    <img src="logo-cpst.png"
+         alt="Conseil Préfectoral Skhirate Témara"
+         class="h-10 w-auto object-contain">
+  </div>
+  <div>
+    <div class="text-sm text-gray-500">Conseil Préfectoral Skhirate Témara</div>
+    <div class="text-lg font-bold">Bureau d'Ordre — Gestion du Courrier</div>
+  </div>
+</div>
+
       <div class="flex items-center gap-2">
         <input id="fileJson" type="file" accept=".json,application/json" class="hidden">
         <button class="btn" id="btnImport">Importer JSON</button>
