@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bureau d'Ordre — Gestion du Courrier</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .card{border-radius:16px;background:#fff;box-shadow:0 12px 36px rgba(0,0,0,.08);padding:16px;}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;border:1px solid #e5e7eb;border-radius:12px;padding:.6rem 1rem;font-weight:600;cursor:pointer;font-size:.9rem;}
+    .btn-primary{background:#1e3a8a;color:#fff;border-color:#1e40af;}
+    .btn-ghost{background:#f8fafc;}
+    .btn-toggle{min-width:10rem;justify-content:center;border-width:2px;}
+    .btn-active{background:#1d4ed8;color:#fff;border-color:#1e40af;}
+    .btn-inactive{background:#fff;color:#1f2937;border-color:#93c5fd;}
+    .input{width:100%;border:1px solid #e5e7eb;border-radius:12px;padding:.6rem .9rem;font-size:.9rem;}
+    .label{font-size:.8rem;font-weight:600;color:#334155;text-transform:uppercase;}
+    .tbl-th{text-align:left;font-size:.7rem;font-weight:700;color:#475569;text-transform:uppercase;padding:.4rem;}
+    .tbl-td{text-align:left;font-size:.85rem;color:#111827;padding:.4rem;}
+    @media print{
+      .no-print{display:none!important}
+      body{background:#fff}
+      .card{box-shadow:none}
+      header{position:static!important}
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+<div class="max-w-7xl mx-auto p-4">
+
+  <!-- ENTÊTE -->
+  <header class="no-print sticky top-0 z-10 bg-white/95 backdrop-blur border rounded-lg">
+    <div class="px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="h-12 w-12 rounded-md border bg-white overflow-hidden flex items-center justify-center">
+          <img src="logo%20CPST.png"
+               alt="Conseil Préfectoral Skhirate Témara"
+               class="h-full w-auto object-contain p-1">
+        </div>
+        <div>
+          <div class="text-sm text-gray-500">Conseil Préfectoral Skhirate Témara</div>
+          <div class="text-lg font-bold">Bureau d'Ordre — Gestion du Courrier</div>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <button class="btn">Importer JSON</button>
+        <button class="btn">Exporter PDF</button>
+        <button class="btn btn-primary">Nouveau courrier</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Exemple de contenu -->
+  <section class="my-4 card">
+    <h2 class="text-lg font-semibold mb-2">Bienvenue</h2>
+    <p>Votre application de gestion du courrier est prête !</p>
+  </section>
+
+</div>
+</body>
+</html>
